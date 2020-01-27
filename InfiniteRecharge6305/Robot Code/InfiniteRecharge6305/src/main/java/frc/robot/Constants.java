@@ -18,11 +18,11 @@ import edu.wpi.first.wpilibj.DigitalSource;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
-    public static int frontLeftMotor = 0;
+    public static final double EncoderDistancePerPulse = 0;
+	public static int frontLeftMotor = 0;
 	public static int backLeftMotor;
 	public static int frontRightMotor;
 	public static int backRightMotor;
-	public static DigitalSource[] leftEncoderPorts;
-	public static DigitalSource leftEncoderReversed;
+	
 
 }

@@ -32,34 +32,37 @@ public class DriveTrain extends SubsystemBase {
 
   private final DifferentialDrive m_drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
 
-  private final Encoder m_leftEncoder = new Encoder(Constants.leftEncoderPorts[0], Constants.leftEncoderPorts[1], Constants.leftEncoderReversed);
+ 
+
 
   
 
 
-  public static DriveTrain instance = new DriveTrain();
-
-  public static DriveTrain getInstance(){
-    return instance;
-  }
-
-  public void drive(double leftSpeed, double rightSpeed){
-    frontLeft.set(leftSpeed);
-    backLeft.set(leftSpeed);
-    backRight.set(rightSpeed);
-    frontRight.set(rightSpeed);
-  }
+  
 
   
 
   
   
   public DriveTrain() {
+    
 
   }
+
+  public void drive(double left, double right){
+    m_drive.tankDrive(left, right);
+  }
+
+  public void setMaxOutput(double maxOutput){
+    m_drive.setMaxOutput(maxOutput);
+  }
+
+  
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
   }
+
+
 }

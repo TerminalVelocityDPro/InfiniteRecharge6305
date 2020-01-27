@@ -21,8 +21,8 @@ import frc.robot.subsystems.DriveTrain;
  */
 public class Robot extends TimedRobot {
   
-  DriveTrain driveTrain;
-  Command teleopDrive;
+  
+  
   private Command m_autonomousCommand;
 
 
@@ -34,8 +34,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    teleopDrive = new TankDrive();
-    driveTrain = DriveTrain.getInstance();
+    
     
     
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
@@ -99,7 +98,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-    teleopDrive.schedule();
+    
   }
 
   /**
