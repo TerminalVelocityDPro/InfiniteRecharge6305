@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class Climb extends SubsystemBase {
-  Spark climbMotor1 = new Spark(Constants.climbMotor1);
-  Spark climbMotor2 = new Spark(Constants.climbMotor2);
+  Spark climbMotor1 = new Spark(Constants.climbMotor1Number);
+  Spark climbMotor2 = new Spark(Constants.climbMotor2Number);
   /**
    * Creates a new Climb.
    */

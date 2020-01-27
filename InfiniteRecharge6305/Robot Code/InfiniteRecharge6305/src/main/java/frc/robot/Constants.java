@@ -23,6 +23,13 @@ public final class Constants {
 	public static int backLeftMotor;
 	public static int frontRightMotor;
 	public static int backRightMotor;
+	public static int spinnerNumber;
+	public static int shooterNumber;
+	public static int rotatorNumber;
+	public static int ballPutterNumber;
+	
+	public static int climbMotor1Number;
+	public static int climbMotor2Number;
 	
 
 }

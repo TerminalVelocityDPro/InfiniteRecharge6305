@@ -14,7 +14,7 @@ import frc.robot.Constants;
 public class Intake extends SubsystemBase {
 
   Spark rotator = new Spark(Constants.rotatorNumber);
-  Spark ballPutter = new Spark(Constants.ballPutter);
+  Spark ballPutter = new Spark(Constants.ballPutterNumber);
   /**
    * Creates a new Intake.
    */
