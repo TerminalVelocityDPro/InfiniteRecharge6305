@@ -8,8 +8,8 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+//import edu.wpi.first.wpilibj.SpeedControllerGroup;
+//import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -23,14 +23,14 @@ public class DriveTrain extends SubsystemBase {
    * Creates a new DriveTrain.
    */
 
-  CANSparkMax frontLeft = new CANSparkMax(Constants.frontLeftMotor, null);
-  CANSparkMax backLeft = new CANSparkMax(Constants.backLeftMotor, null);
-  private final SpeedControllerGroup m_leftMotors = new SpeedControllerGroup(frontLeft, backLeft);
-  CANSparkMax frontRight = new CANSparkMax(Constants.frontRightMotor, null);
-  CANSparkMax backRight = new CANSparkMax(Constants.backRightMotor, null);
-  private final SpeedControllerGroup m_rightMotors = new SpeedControllerGroup(frontRight, backRight);
+  CANSparkMax frontLeft = new CANSparkMax(Constants.frontLeftMotor, MotorType.kBrushless);
+  CANSparkMax backLeft = new CANSparkMax(Constants.backLeftMotor, MotorType.kBrushless);
+  //private final SpeedControllerGroup m_leftMotors = new SpeedControllerGroup(frontLeft, backLeft);
+  CANSparkMax frontRight = new CANSparkMax(Constants.frontRightMotor, MotorType.kBrushless);
+  CANSparkMax backRight = new CANSparkMax(Constants.backRightMotor, MotorType.kBrushless);
+  //private final SpeedControllerGroup m_rightMotors = new SpeedControllerGroup(frontRight, backRight);
 
-  private final DifferentialDrive m_drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
+  //private final DifferentialDrive m_drive = new DifferentialDrive(m_leftMotors, m_rightMotors);
 
  
 
@@ -50,12 +50,15 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public void drive(double left, double right){
-    m_drive.tankDrive(left, right);
+    frontLeft.set(-left);
+    backLeft.set(-left);
+    frontRight.set(right);
+    backRight.set(right);
+
+    //m_drive.tankDrive(left, right);
   }
 
-  public void setMaxOutput(double maxOutput){
-    m_drive.setMaxOutput(maxOutput);
-  }
+  
 
   
 

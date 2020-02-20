@@ -22,6 +22,16 @@ public class Intake extends SubsystemBase {
 
   }
 
+  public void suckIn(double speed){
+    ballPutter.set(speed);
+  }
+
+
+  public void moveUp(double speed){
+    rotator.set(speed);
+  }
+
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

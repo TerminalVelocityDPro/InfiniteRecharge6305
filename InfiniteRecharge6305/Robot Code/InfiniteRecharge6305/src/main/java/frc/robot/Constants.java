@@ -19,11 +19,11 @@ import edu.wpi.first.wpilibj.DigitalSource;
  */
 public final class Constants {
     public static final double EncoderDistancePerPulse = 0;
-	public static int frontLeftMotor = 0;
-	public static int backLeftMotor;
-	public static int frontRightMotor;
-	public static int backRightMotor;
-	public static int spinnerNumber;
+	public static int frontLeftMotor = 1;
+	public static int backLeftMotor = 4;
+	public static int frontRightMotor = 2;
+	public static int backRightMotor = 3;
+	public static int spinnerNumber = 4;
 	public static int shooterNumber;
 	public static int rotatorNumber;
 	public static int ballPutterNumber;
