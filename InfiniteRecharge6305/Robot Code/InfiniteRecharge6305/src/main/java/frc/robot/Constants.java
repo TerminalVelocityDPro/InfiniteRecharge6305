@@ -8,6 +8,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.DigitalSource;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.kinematics.DifferentialDriveKinematics;
 
 /**
  * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
@@ -30,6 +32,22 @@ public final class Constants {
 	
 	public static int climbMotor1Number;
 	public static int climbMotor2Number;
+	public static final double ksVolts = 0;
+	public static final double kvVoltSecondsPerMeter = 0;
+	public static final double kaVoltSecondsSquaredPerMeter = 0;
+
+	public static final double kPDriveVel = 8.5;
+	public static final double kTrackwidthMeters = 0.69;
+	public static final DifferentialDriveKinematics kDriveKinematics = new DifferentialDriveKinematics(kTrackwidthMeters);
+
+	public static final double kMaxSpeedMetersPerSecond = 0;
+	public static final double kMaxAccelerationMetersPerSecondSquared = 3;
+
+	public static final double kRamseteB = 0;
+	public static final double kRamseteZeta = 0;
+
+
+	
 	
 
 }
