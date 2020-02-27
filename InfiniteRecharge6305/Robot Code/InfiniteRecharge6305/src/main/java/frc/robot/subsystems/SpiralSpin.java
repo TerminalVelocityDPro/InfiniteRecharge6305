@@ -19,11 +19,15 @@ public class SpiralSpin extends SubsystemBase {
    */
   public SpiralSpin() {
 
+    
+
   }
 
   public void spin(double speed){
     spinner.set(speed);
   }
+
+
 
 
   @Override

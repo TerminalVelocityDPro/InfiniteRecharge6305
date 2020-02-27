@@ -25,10 +25,10 @@ public final class Constants {
 	public static int backLeftMotor = 4;
 	public static int frontRightMotor = 2;
 	public static int backRightMotor = 3;
-	public static int spinnerNumber = 4;
-	public static int shooterNumber;
-	public static int rotatorNumber;
-	public static int ballPutterNumber;
+	public static int spinnerNumber ;
+	public static int shooterNumber = 6;
+	public static int rotatorNumber = 8;
+	public static int ballPutterNumber = 7;
 	
 	public static int climbMotor1Number;
 	public static int climbMotor2Number;

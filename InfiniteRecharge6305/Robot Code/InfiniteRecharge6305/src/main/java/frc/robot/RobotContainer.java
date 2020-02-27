@@ -11,7 +11,10 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
+import frc.robot.commands.AutoDrive;
+import frc.robot.commands.ComplexAuto1;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.MoveShooter;
 import frc.robot.commands.Shoot;
 import frc.robot.commands.Spin;
 import frc.robot.commands.TankDrive;
@@ -22,6 +25,7 @@ import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.SpiralSpin;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 /**
@@ -60,6 +64,8 @@ public class RobotContainer {
     () -> leftJoystick.getY(), 
     () -> rightJoystick.getY()));
 
+    spinner.setDefaultCommand(new Spin(spinner, 0));
+
 
 
     
@@ -74,12 +80,25 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-    new JoystickButton(xbox, Button.kA.value)
-        .whenPressed(new Shoot(shooter, 0.5));
-    new JoystickButton(xbox, Button.kB.value).whenPressed(new suckIn(intake, 0.5));
-    new JoystickButton(xbox, Button.kX.value).whenPressed(new suckIn(intake, -0.5));
-    new JoystickButton(xbox, Button.kBumperLeft.value).whenPressed(new Spin(spinner, 0.5));
-    new JoystickButton(xbox, Button.kBumperRight.value).whenPressed(new Spin(spinner, -0.5));
+    //new JoystickButton(xbox, Button.kA.value)
+        //.whenPressed(new Shoot(shooter, 0.5));
+   // new JoystickButton(xbox, Button.kB.value).whenPressed(new suckIn(intake, 0.5));
+    //new JoystickButton(xbox, Button.kX.value).whenPressed(new suckIn(intake, -0.5));
+    new JoystickButton(xbox, Button.kA.value).whileHeld(new Shoot(shooter, 0.75));
+    new JoystickButton(xbox, Button.kB.value).whileHeld(new Shoot(shooter, -0.75));
+    new JoystickButton(xbox, Button.kA.value).whenInactive(new Shoot(shooter, 0));
+    new JoystickButton(xbox, Button.kB.value).whenInactive(new Shoot(shooter, 0));
+    new JoystickButton(xbox, Button.kStart.value).whenPressed(new Spin(spinner, 0));
+    new JoystickButton(xbox, Button.kX.value).whileHeld(new suckIn(intake, 1));  
+    new JoystickButton(xbox, Button.kX.value).whenInactive(new suckIn(intake, 0));  
+    new JoystickButton(xbox, Button.kY.value).whileHeld(new suckIn(intake, -1));
+    new JoystickButton(xbox, Button.kY.value).whenInactive(new suckIn(intake, 0));
+    new JoystickButton(xbox, Button.kBumperLeft.value).whileHeld(new MoveShooter(intake, 0.5));
+    new JoystickButton(xbox, Button.kBumperLeft.value).whenInactive(new MoveShooter(intake, 0));
+    new JoystickButton(xbox, Button.kBumperRight.value).whileHeld(new MoveShooter(intake, -0.5));
+    new JoystickButton(xbox, Button.kBumperRight.value).whenInactive(new MoveShooter(intake, 0));
+    new JoystickButton(xbox, Button.kStart.value).whileHeld(new suckIn(intake, 0));
+    new JoystickButton(xbox, Button.kStart.value).whileHeld(new MoveShooter(intake, 0));
   }
 
 
@@ -90,6 +109,7 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_autoCommand;
+    SequentialCommandGroup drive = new ComplexAuto1(m_robotDrive, shooter);
+    return drive;
   }
 }

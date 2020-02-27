@@ -7,6 +7,8 @@
 
 package frc.robot.subsystems;
 
+
+import java.lang.Math;
 import edu.wpi.first.wpilibj.Encoder;
 //import edu.wpi.first.wpilibj.SpeedControllerGroup;
 //import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -50,10 +52,30 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public void drive(double left, double right){
-    frontLeft.set(-left);
-    backLeft.set(-left);
-    frontRight.set(right);
-    backRight.set(right);
+    double checkLeft = Math.abs(left);
+    double checkRight = Math.abs(right);
+
+    // double newLeft = abs(left);
+    if(checkLeft > 0.25){
+      frontLeft.set(left);
+      backLeft.set(left);
+    }else{
+      frontLeft.set(0);
+      backLeft.set(0);
+    }
+
+    if(checkRight > 0.25){
+      frontRight.set(-right);
+      backRight.set(-right);
+    }else{
+      frontRight.set(0);
+      backRight.set(0);
+    }
+
+
+
+    
+    
 
     //m_drive.tankDrive(left, right);
   }
