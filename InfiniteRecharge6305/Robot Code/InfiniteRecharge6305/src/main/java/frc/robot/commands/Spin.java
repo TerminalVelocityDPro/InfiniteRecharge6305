@@ -14,15 +14,15 @@ import frc.robot.subsystems.SpiralSpin;
 
 public class Spin extends CommandBase {
   private final SpiralSpin spinner;
-  private final double m_speed;
+  private final int m_action;
 
 
   /**
    * Creates a new Spin.
    */
-  public Spin(SpiralSpin subsystem, double speed) {
+  public Spin(SpiralSpin subsystem, int action) {
     spinner = subsystem;
-    m_speed = speed;
+    m_action = action;
     addRequirements(spinner);
 
     // Use addRequirements() here to declare subsystem dependencies.
@@ -36,7 +36,7 @@ public class Spin extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    spinner.spin(m_speed);
+    spinner.pushPull(m_action);
   }
 
   // Called once the command ends or is interrupted.

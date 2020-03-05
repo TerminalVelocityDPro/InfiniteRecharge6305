@@ -32,6 +32,9 @@ public final class Constants {
 	
 	public static int climbMotor1Number;
 	public static int climbMotor2Number;
+	public static int compressorNumber;
+	public static int doubleSolenoidPort1;
+	public static int doubleSolenoidPort2;
 	public static final double ksVolts = 0;
 	public static final double kvVoltSecondsPerMeter = 0;
 	public static final double kaVoltSecondsSquaredPerMeter = 0;

@@ -9,6 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
+//import frc.robot.XboxController;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.XboxController.Button;
 import frc.robot.commands.AutoDrive;
@@ -18,6 +19,7 @@ import frc.robot.commands.MoveShooter;
 import frc.robot.commands.Shoot;
 import frc.robot.commands.Spin;
 import frc.robot.commands.TankDrive;
+import frc.robot.commands.intakeUp;
 import frc.robot.commands.suckIn;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.ExampleSubsystem;
@@ -84,21 +86,29 @@ public class RobotContainer {
         //.whenPressed(new Shoot(shooter, 0.5));
    // new JoystickButton(xbox, Button.kB.value).whenPressed(new suckIn(intake, 0.5));
     //new JoystickButton(xbox, Button.kX.value).whenPressed(new suckIn(intake, -0.5));
+
     new JoystickButton(xbox, Button.kA.value).whileHeld(new Shoot(shooter, 0.75));
     new JoystickButton(xbox, Button.kB.value).whileHeld(new Shoot(shooter, -0.75));
     new JoystickButton(xbox, Button.kA.value).whenInactive(new Shoot(shooter, 0));
     new JoystickButton(xbox, Button.kB.value).whenInactive(new Shoot(shooter, 0));
-    new JoystickButton(xbox, Button.kStart.value).whenPressed(new Spin(spinner, 0));
-    new JoystickButton(xbox, Button.kX.value).whileHeld(new suckIn(intake, 1));  
-    new JoystickButton(xbox, Button.kX.value).whenInactive(new suckIn(intake, 0));  
-    new JoystickButton(xbox, Button.kY.value).whileHeld(new suckIn(intake, -1));
-    new JoystickButton(xbox, Button.kY.value).whenInactive(new suckIn(intake, 0));
-    new JoystickButton(xbox, Button.kBumperLeft.value).whileHeld(new MoveShooter(intake, 0.5));
-    new JoystickButton(xbox, Button.kBumperLeft.value).whenInactive(new MoveShooter(intake, 0));
-    new JoystickButton(xbox, Button.kBumperRight.value).whileHeld(new MoveShooter(intake, -0.5));
-    new JoystickButton(xbox, Button.kBumperRight.value).whenInactive(new MoveShooter(intake, 0));
+    //new JoystickButton(xbox, Button.kStart.value).whenPressed(new Spin(spinner, 0));
+    //new JoystickButton(xbox, Button.kX.value).whileHeld(new suckIn(intake, 1));  
+    //new JoystickButton(xbox, Button.kX.value).whenInactive(new suckIn(intake, 0));  
+    //new JoystickButton(xbox, Button.kY.value).whileHeld(new suckIn(intake, -1));
+    //new JoystickButton(xbox, Button.kY.value).whenInactive(new suckIn(intake, 0));
+
+    new JoystickButton(xbox, Button.kX.value).whenPressed(new Spin(spinner, 1));
+    new JoystickButton(xbox, Button.kY.value).whenPressed(new Spin(spinner, -1));
+    //new JoystickButton(xbox, , buttonNumber)
+    //new JoystickButton(xbox, Button.kBumperLeft.value).whileHeld(new MoveShooter(intake, 0.5));
+    new JoystickButton(xbox, Button.kBumperLeft.value).whileHeld(new intakeUp(intake, 0.5, 1));
+    new JoystickButton(xbox, Button.kBumperLeft.value).whenInactive(new intakeUp(intake, 0, 0));
+    //new JoystickButton(xbox, Button.kBumperRight.value).whileHeld(new MoveShooter(intake, -0.5));
+    new JoystickButton(xbox, Button.kBumperRight.value).whileHeld(new intakeUp(intake, -0.5, -1));
+    new JoystickButton(xbox, Button.kBumperRight.value).whenInactive(new intakeUp(intake, 0, 0));
     new JoystickButton(xbox, Button.kStart.value).whileHeld(new suckIn(intake, 0));
     new JoystickButton(xbox, Button.kStart.value).whileHeld(new MoveShooter(intake, 0));
+    //new JoystickButton(xbox, Button.k)
   }
 
 

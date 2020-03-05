@@ -7,13 +7,24 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class SpiralSpin extends SubsystemBase {
 
-  Spark spinner = new Spark(Constants.spinnerNumber);
+  //Compressor c= new Compressor(Constants.compressorNumber);
+
+  DoubleSolenoid doubleS = new DoubleSolenoid(Constants.doubleSolenoidPort1,Constants.doubleSolenoidPort2);
+
+
+
+  
+
+  //Spark spinner = new Spark(Constants.spinnerNumber);
   /**
    * Creates a new SpiralSpin.
    */
@@ -23,8 +34,15 @@ public class SpiralSpin extends SubsystemBase {
 
   }
 
-  public void spin(double speed){
-    spinner.set(speed);
+  public void pushPull(int num){
+    if(num == 0){
+      doubleS.set(Value.kOff);
+    }
+    else if(num == 1){
+      doubleS.set(Value.kForward);
+    }else if(num == -1){
+      doubleS.set(Value.kReverse);
+    }
   }
 
 
